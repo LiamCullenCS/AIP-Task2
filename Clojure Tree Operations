@@ -1,0 +1,48 @@
+(def tree1 '[[[b a] c] [d [[f e] g]]])
+(def tree2 '[a [c b] d])
+(def emptyvector [])
+
+;;the tree pattern used in 2.6c - order-if question
+(def maintree '[P[Q[R G [S F E]] D] [T C [V B A] [X G E K]]])
+
+;;define root of every tree
+(defn root [tree] 
+  (first tree)
+)
+
+(def parent root)
+
+;;if the count of the tree is more or equal to 2, the node must have at least one child
+(defn has-children? [tree]
+  (>= (count tree) 2)
+)
+
+;;can use the following 'left-child' and 'right-child' in conjunction with 'root'
+;;method to find new root
+;;   (root (left-child maintree))
+;;=> Q
+
+(defn n1-child [tree]
+  (if (has-children? tree)
+    (nth tree 1)
+    nil))
+
+(defn n2-child [tree]
+  (if (has-children? tree)
+      (nth tree 2)
+      nil))
+    
+(defn n3-child [tree]
+  (if (has-children? tree)
+      (nth tree 3)
+      nil))
+    
+(defn branch-num [tree]
+  (dec (count tree)))
+
+;;simple vector sorting method
+(defn easysort [lis]
+  (sort-by str lis)
+)
+
+
