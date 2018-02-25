@@ -45,4 +45,13 @@
   (sort-by str lis)
 )
 
-
+;;this method grabs every child of the node X. 
+;;the goal is to contruct a list of the children, then reorder them using easysort
+;;I am fully aware this is a shitty way of doing this
+(defn testcons [lis]
+  (let [firstnode (n1-child (n3-child (n2-child maintree)))
+        secondnode (n2-child (n3-child (n2-child maintree)))
+        thirdnode (n3-child (n3-child (n2-child maintree)))]
+      
+  (cons firstnode (cons secondnode (cons thirdnode())))
+  ))
