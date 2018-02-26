@@ -22,6 +22,11 @@
 ;;   (root (left-child maintree))
 ;;=> Q
 
+(defn n-child [tree num]
+  (if (has-children? tree)
+     (nth tree num)
+     nil))
+
 (defn n1-child [tree]
   (if (has-children? tree)
     (nth tree 1)
@@ -41,9 +46,15 @@
   (dec (count tree)))
 
 ;;simple vector sorting method
+;;(into [] (easysort (rest (n3-child (n2-child maintree))))) <- *kinda* works, need to place back into the tree tho
 (defn easysort [lis]
   (sort-by str lis)
 )
+
+(defn getfirst [x]
+  (if (seq x)
+    (first x)
+    x))
 
 ;;this method grabs every child of the node X. 
 ;;the goal is to contruct a list of the children, then reorder them using easysort
