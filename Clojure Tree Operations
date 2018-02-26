@@ -56,6 +56,33 @@
     (first x)
     x))
 
+;;we'll use this method to try and access nested values.
+(def nested1 '(a((b) c) (d (e (f g) h) i)))
+
+(defn find-atom [lis val]
+  (cond
+    (empty? lis)
+    false
+    
+    (= (first lis) val)
+    true
+    
+    (seq? (first lis))
+    (or (find-atom (first lis) val)
+        (recur (rest lis) val))
+      
+    :else
+    (recur (rest lis) val)
+  ))
+
+(defn replace-vec [lis]
+  (let [oldlis  (testcons lis)
+        newlis (easysort (testcons lis))]
+      
+      ;;(cons oldlis (cons newlis()))
+      (assoc '[G E K] '[E G K])
+))
+
 ;;this method grabs every child of the node X. 
 ;;the goal is to contruct a list of the children, then reorder them using easysort
 ;;I am fully aware this is a shitty way of doing this
